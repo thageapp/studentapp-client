@@ -117,14 +117,14 @@ progress {
   bottom: 0;
   border-radius: 50%;
   background: conic-gradient(
-    rgb(255, 81, 0),
-    rgb(255, 81, 0) calc(var(--progress) * 1%),
+    rgb(83, 216, 6),
+    rgb(40, 197, 9) calc(var(--progress) * 1%),
     rgba(0, 0, 0, 0.1) 0
   );
   -webkit-mask: radial-gradient(
     closest-side,
     transparent calc(100% - 15px),
-    #ff5100 calc(100% - 40px + 1px)
+    #66ff00 calc(100% - 40px + 1px)
   );
 }
 

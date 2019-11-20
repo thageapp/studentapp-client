@@ -87,7 +87,7 @@ export default {
 }
 
 .add-button-aura {
-  background: rgba(255, 115, 0, 0.75);
+  background: rgba(78, 184, 7, 0.548);
   height: 48px;
   width: 48px;
   display: flex;
@@ -98,7 +98,7 @@ export default {
 }
 
 .add-button {
-  background: #ff5100;
+  background: #3bc007;
   height: 35px;
   width: 35px;
   display: flex;
@@ -141,7 +141,7 @@ export default {
 }
 
 .compito-per-casa {
-  background: #ffa07a;
+  background: #0cac06;
 }
 
 .compito-scritto {
@@ -153,6 +153,6 @@ export default {
 }
 
 .avviso {
-  background: #f08080;
+  background: #8df080;
 }
 </style>

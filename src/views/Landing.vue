@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="logo-wrapper">
-      <img src="@/assets/header-icon.svg" alt="Logo">
+      Thage
     </div>
 
     <div class="buttons-wrapper">
@@ -38,27 +38,28 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(255, 113, 0);
+  background: rgb(97, 216, 0);
   background: -moz-linear-gradient(
     211deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(212, 58, 44, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
   background: -webkit-linear-gradient(
     211deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(212, 58, 44, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
   background: linear-gradient(
     211deg,
-    rgba(255, 123, 0, 1) 0%,
-    rgba(212, 58, 44, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7b00",endColorstr="#d43a2c",GradientType=1);
 }
 
 .logo-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 200%;
 }
 
 img {

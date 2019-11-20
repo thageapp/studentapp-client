@@ -6,7 +6,7 @@
 
     <div v-if="$route.path !== '/' && $route.path !== '/registrazione' && $route.path !== '/accesso'" id="nav" :class="{ active: activeNavbar }" @click="activeNavbar ? activeNavbar = !activeNavbar : activeNavbar = activeNavbar">
       <div class="logo-wrapper">
-        <img src="@/assets/header-icon.svg" alt="Logo">
+        Thage
       </div>
 
       <router-link class="nav-link" to="/banco">
@@ -120,23 +120,22 @@ button {
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   font-size: 90%;
-  background: rgb(255, 113, 0);
+  background: rgb(97, 216, 0);
   background: -moz-linear-gradient(
     211deg,
-    rgba(255, 113, 0, 1) 0%,
-    rgba(217, 48, 31, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
   background: -webkit-linear-gradient(
     211deg,
-    rgba(255, 113, 0, 1) 0%,
-    rgba(217, 48, 31, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
   background: linear-gradient(
     211deg,
-    rgba(255, 113, 0, 1) 0%,
-    rgba(217, 48, 31, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7100",endColorstr="#d9301f",GradientType=1);
 }
 
 button.btn-grey {
@@ -228,23 +227,22 @@ h6 {
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
-  background: rgb(255, 113, 0);
+  background: rgb(97, 216, 0);
   background: -moz-linear-gradient(
     211deg,
-    rgba(255, 113, 0, 1) 0%,
-    rgba(217, 48, 31, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
   background: -webkit-linear-gradient(
     211deg,
-    rgba(255, 113, 0, 1) 0%,
-    rgba(217, 48, 31, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
   background: linear-gradient(
     211deg,
-    rgba(255, 113, 0, 1) 0%,
-    rgba(217, 48, 31, 1) 100%
+    rgba(97, 216, 0, 1) 0%,
+    rgba(80, 179, 0, 1) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff7100",endColorstr="#d9301f",GradientType=1);
 }
 
 @media screen and (max-width: 600px) {
@@ -278,6 +276,9 @@ h6 {
 
 #nav .logo-wrapper {
   margin-bottom: 10px;
+  margin-top: 10px;
+  color: white;
+  font-size: 150%;
 }
 
 #nav img {
@@ -461,7 +462,7 @@ h6 {
 }
 
 .modal-content .add-button {
-  color: rgb(255, 102, 0);
+  color: rgb(97, 212, 0);
   margin-top: 10px;
 }
 

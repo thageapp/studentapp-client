@@ -8,12 +8,30 @@
           <h3>I tuoi dati personali</h3>
 
           <span id="student-infos">
-            <div class="info"><b>Nome completo:</b> {{ `${student.name} ${student.surname}` }}</div>
-            <div class="info"><b>Classe:</b> {{ student.class_name }}</div>
-            <div class="info"><b>Data di nascita:</b> {{ birthDate }}</div>
-            <div class="info"><b>Email:</b> {{ student.email }}</div>
-            <div class="info"><b>Sesso:</b> {{ student.gender ? 'M' : 'F' }}</div>
-            <div class="info"><b>Numero di telefono:</b> {{ student.phone_number }}</div>
+            <div class="info">
+              <b>Nome completo:</b>
+              {{ `${student.name} ${student.surname}` }}
+            </div>
+            <div class="info">
+              <b>Classe:</b>
+              {{ student.class_name }}
+            </div>
+            <div class="info">
+              <b>Data di nascita:</b>
+              {{ birthDate }}
+            </div>
+            <div class="info">
+              <b>Email:</b>
+              {{ student.email }}
+            </div>
+            <div class="info">
+              <b>Sesso:</b>
+              {{ student.gender ? 'M' : 'F' }}
+            </div>
+            <div class="info">
+              <b>Numero di telefono:</b>
+              {{ student.phone_number }}
+            </div>
           </span>
         </tab>
 
@@ -21,9 +39,7 @@
           <h3>Le tue materie</h3>
 
           <div class="subject" v-for="subject in subjects" :key="subject.id">
-            <div class="subject-name">
-              {{ subject.name }}
-            </div>
+            <div class="subject-name">{{ subject.name }}</div>
             <div class="delete-button" @click="deleteSubject(subject.id)">
               <i data-feather="x"></i>
             </div>
@@ -35,13 +51,13 @@
         <tab name="Termini e condizioni">
           <h3>Ci prendiamo cura dei dati dei nostri utenti</h3>
 
-          <a href="https://westudents.it/privacy.html" target="_blank">
+          <a href="https://example.com/privacy.html" target="_blank">
             <button>Scopri come</button>
           </a>
         </tab>
 
         <tab name="Elimina account">
-          <h3>Sei sicuro di voler eliminare il tuo account WeStudents?</h3>
+          <h3>Sei sicuro di voler eliminare il tuo account Thage?</h3>
 
           <button @click="deleteStudent">Conferma</button>
           <router-link to="/">
@@ -56,7 +72,13 @@
         <div class="modal-form">
           <div class="form-group">
             <label for="newSubject">Materia</label>
-            <input type="text" v-model="newSubject" id="newSubject" placeholder="Nome della materia..." required>
+            <input
+              type="text"
+              v-model="newSubject"
+              id="newSubject"
+              placeholder="Nome della materia..."
+              required
+            />
           </div>
 
           <div class="buttons-container">
@@ -69,78 +91,83 @@
 </template>
 
 <script>
-import moment from 'moment'
-import feather from 'feather-icons'
-import StudentsController from '@/controllers/students'
-import SubjectsStore from '@/stores/subjects'
+import moment from "moment";
+import feather from "feather-icons";
+import StudentsController from "@/controllers/students";
+import SubjectsStore from "@/stores/subjects";
 
 export default {
-  name: 'impostazioni',
-  data () {
+  name: "impostazioni",
+  data() {
     return {
-      title: 'Il tuo profilo',
-      student: JSON.parse(localStorage.getItem('student') || '{}'),
-      newSubject: '',
+      title: "Il tuo profilo",
+      student: JSON.parse(localStorage.getItem("student") || "{}"),
+      newSubject: "",
       subjects: []
-    }
+    };
   },
-  mounted () {
-    feather.replace()
+  mounted() {
+    feather.replace();
 
     SubjectsStore.methods.fetchSubjects(() => {
-      this.subjects = SubjectsStore.data.subjects
-    })
+      this.subjects = SubjectsStore.data.subjects;
+    });
   },
-  updated () {
-    feather.replace()
+  updated() {
+    feather.replace();
   },
   computed: {
-    birthDate () {
-      return moment(this.student.birth_date, 'YYYY-MM-DD').format('DD/MM/YYYY')
+    birthDate() {
+      return moment(this.student.birth_date, "YYYY-MM-DD").format("DD/MM/YYYY");
     }
   },
   methods: {
     // Calls the store method to delete a student
-    deleteStudent () {
-      StudentsController.methods.deleteStudent()
+    deleteStudent() {
+      StudentsController.methods.deleteStudent();
     },
     // Shows the modal to add a subject
-    addSubjectModal () {
-      this.newSubject = ''
-      this.$modal.show('add-subject-modal')
+    addSubjectModal() {
+      this.newSubject = "";
+      this.$modal.show("add-subject-modal");
     },
     // Calls the store method to add a grade and updates 'grades' array
-    addSubject () {
+    addSubject() {
       if (this.newSubject.length < 1) {
-        alert('Devi inserire il nome della materia.')
-        return false
+        alert("Devi inserire il nome della materia.");
+        return false;
       }
 
       SubjectsStore.methods.addSubject(this.newSubject, err => {
         if (!err) {
-          this.subjects = SubjectsStore.data.subjects
-          this.$modal.hide('add-subject-modal')
+          this.subjects = SubjectsStore.data.subjects;
+          this.$modal.hide("add-subject-modal");
         } else {
-          alert('Non è stato possibile aggiungere la materia.')
+          alert("Non è stato possibile aggiungere la materia.");
         }
-      })
+      });
     },
     // Calls the store method to delete a subject by its id
-    deleteSubject (id) {
-      SubjectsStore.methods.deleteSubject(id, (err) => {
-        if (err && err.response.data.error.name === 'SequelizeForeignKeyConstraintError') {
-          alert('Non puoi eliminare questa materia, ci sono ancora dei voti relativi ad essa.')
-          return
+    deleteSubject(id) {
+      SubjectsStore.methods.deleteSubject(id, err => {
+        if (
+          err &&
+          err.response.data.error.name === "SequelizeForeignKeyConstraintError"
+        ) {
+          alert(
+            "Non puoi eliminare questa materia, ci sono ancora dei voti relativi ad essa."
+          );
+          return;
         } else if (err) {
-          alert('Si è verificato un problema nell\'eliminazione della materia.')
-          return
+          alert("Si è verificato un problema nell'eliminazione della materia.");
+          return;
         }
 
-        this.subjects = SubjectsStore.data.subjects
-      })
+        this.subjects = SubjectsStore.data.subjects;
+      });
     }
   }
-}
+};
 </script>
 
 <style>
@@ -153,19 +180,19 @@ export default {
 
 @media screen and (max-width: 1700px) {
   .tabs-component-tabs {
-  grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
 @media screen and (max-width: 1500px) {
   .tabs-component-tabs {
-  grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 @media screen and (max-width: 1300px) {
   .tabs-component-tabs {
-  grid-template-columns: repeat(4, 1fr) calc(1vw + 10px);
+    grid-template-columns: repeat(4, 1fr) calc(1vw + 10px);
   }
 }
 
@@ -295,7 +322,7 @@ export default {
   will-change: background, box-shadow, transform;
 }
 
-button:not(:last-child){
+button:not(:last-child) {
   margin-right: 10px;
 }
 

@@ -317,7 +317,7 @@ export default {
   .grade-value {
     margin-right: 15px;
     font-size: 125%;
-    color: rgb(255, 81, 0);
+    color: rgb(30, 199, 8);
   }
 
   .grade-subject {
