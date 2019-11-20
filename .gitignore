@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 node_modules/
 client/
 verifica/
 .env
-.DS_Store
-=======
 .DS_Store
 node_modules
 /dist
@@ -26,4 +23,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
->>>>>>> 79d02a9112f80245f2b62fdf0523295885c3c262
