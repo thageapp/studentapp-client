@@ -1,43 +1,62 @@
 <template>
   <div id="app">
-    <div id="hamburger" v-if="$route.path !== '/' && $route.path !== '/registrazione' && $route.path !== '/accesso'" @click="activeNavbar = !activeNavbar">
+    <div
+      id="hamburger"
+      v-if="$route.path !== '/' && $route.path !== '/registrazione' && $route.path !== '/accesso'"
+      @click="activeNavbar = !activeNavbar"
+    >
       <i data-feather="menu"></i>
     </div>
 
-    <div v-if="$route.path !== '/' && $route.path !== '/registrazione' && $route.path !== '/accesso'" id="nav" :class="{ active: activeNavbar }" @click="activeNavbar ? activeNavbar = !activeNavbar : activeNavbar = activeNavbar">
-      <div class="logo-wrapper">
-        Thage
-      </div>
+    <div
+      v-if="$route.path !== '/' && $route.path !== '/registrazione' && $route.path !== '/accesso'"
+      id="nav"
+      :class="{ active: activeNavbar }"
+      @click="activeNavbar ? activeNavbar = !activeNavbar : activeNavbar = activeNavbar"
+    >
+      <div class="logo-wrapper">Thage</div>
 
       <router-link class="nav-link" to="/banco">
-        <span><i data-feather="home"></i></span>
+        <span>
+          <i data-feather="home"></i>
+        </span>
         <span>Il tuo banco</span>
       </router-link>
 
       <router-link class="nav-link" to="/voti">
-        <span><i data-feather="hash"></i></span>
+        <span>
+          <i data-feather="hash"></i>
+        </span>
         <span>I tuoi voti</span>
       </router-link>
 
       <router-link class="nav-link" to="/agenda">
-        <span><i data-feather="book"></i></span>
+        <span>
+          <i data-feather="book"></i>
+        </span>
         <span>La tua agenda</span>
       </router-link>
 
       <router-link class="nav-link" to="/profilo">
-        <span><i data-feather="user"></i></span>
+        <span>
+          <i data-feather="user"></i>
+        </span>
         <span>Il tuo profilo</span>
       </router-link>
 
       <div class="nav-link" @click="logout">
-        <span><i data-feather="arrow-left"></i></span>
+        <span>
+          <i data-feather="arrow-left"></i>
+        </span>
         <span>Logout</span>
       </div>
 
-      <hr class="close-hr">
+      <hr class="close-hr" />
 
       <div class="nav-link close">
-        <span><i data-feather="x"></i></span>
+        <span>
+          <i data-feather="x"></i>
+        </span>
         <span>chiudi</span>
       </div>
     </div>
@@ -49,37 +68,46 @@
 </template>
 
 <script>
-import feather from 'feather-icons'
-import StudentsStore from '@/controllers/students'
+import feather from "feather-icons";
+import StudentsStore from "@/controllers/students";
 
 export default {
-  data () {
+  data() {
     return {
       activeNavbar: false,
-      student: JSON.parse(localStorage.getItem('student') || '{}')
-    }
+      student: JSON.parse(localStorage.getItem("student") || "{}")
+    };
   },
   methods: {
-    logout () {
-      StudentsStore.methods.logout()
+    logout() {
+      StudentsStore.methods.logout();
     }
   },
-  mounted () {
-    feather.replace()
+  mounted() {
+    feather.replace();
 
-    if (!(localStorage.getItem('token') && localStorage.getItem('token').length > 50 && typeof JSON.parse(localStorage.getItem('student')) === 'object' && localStorage.getItem('isStudentLoggedIn') === 'true')) {
-      localStorage.setItem('token', '')
-      localStorage.setItem('student', '')
-      localStorage.setItem('isStudentLoggedIn', 'false')
+    if (
+      !(
+        localStorage.getItem("token") &&
+        localStorage.getItem("token").length > 50 &&
+        typeof JSON.parse(localStorage.getItem("student")) === "object" &&
+        localStorage.getItem("isStudentLoggedIn") === "true"
+      )
+    ) {
+      localStorage.setItem("token", "");
+      localStorage.setItem("student", "");
+      localStorage.setItem("isStudentLoggedIn", "false");
     }
   },
-  updated () {
-    feather.replace()
+  updated() {
+    feather.replace();
   }
-}
+};
 </script>
 
 <style>
+/* TODO: use variables for colors */
+
 /*
   Montserrat fofm
 */
@@ -177,8 +205,8 @@ h6 {
 */
 
 #app {
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   display: grid;
   font-weight: 400;
   grid-template-columns: 1fr 5fr;
@@ -323,12 +351,19 @@ h6 {
   cursor: pointer;
 }
 
-.close, .close span, .close-hr, #hamburger svg {
+.close,
+.close span,
+.close-hr,
+#hamburger svg {
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .close, .close span, .close-hr, #hamburger, #hamburger svg {
+  .close,
+  .close span,
+  .close-hr,
+  #hamburger,
+  #hamburger svg {
     display: block;
   }
 
@@ -452,11 +487,11 @@ h6 {
 }
 
 .modal-content .buttons-container {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-.modal-content   button {
+.modal-content button {
   margin-bottom: 10px;
   margin-right: 0 !important;
 }
