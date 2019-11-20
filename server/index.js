@@ -7,6 +7,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 const db = require('./config/mysql')
 
+// TODO: use async/await in order to avoid callback hells
+
 // Port
 const port = process.env.PORT || 3000
 

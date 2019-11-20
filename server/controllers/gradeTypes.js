@@ -2,6 +2,8 @@ const GradeTypes = require('../models/GradeTypes')
 const jwt = require('jsonwebtoken')
 const { authentication } = require('../config/jwt')
 
+// TODO: merge with grades controller
+
 // Fetch GradeTypes
 exports.findAll = (req, res) => {
   jwt.verify(req.token, authentication.jwtSecret, (error, authData) => {

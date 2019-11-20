@@ -2,6 +2,8 @@ const NoteTypes = require('../models/NoteTypes')
 const jwt = require('jsonwebtoken')
 const { authentication } = require('../config/jwt')
 
+// TODO: merge with notes controller
+
 // Fetch NoteTypes
 exports.findAll = (req, res) => {
   jwt.verify(req.token, authentication.jwtSecret, (error, authData) => {
