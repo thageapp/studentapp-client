@@ -2,3 +2,4 @@ node_modules/
 client/
 verifica/
 .env
+.DS_Store
